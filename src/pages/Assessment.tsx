@@ -3,6 +3,8 @@ import React from "react";
 import PageTransition from "@/components/ui/PageTransition";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import { useToast } from "@/hooks/use-toast";
+import { useNavigate } from "react-router-dom";
 import { 
   Breadcrumb,
   BreadcrumbItem,
@@ -14,6 +16,20 @@ import {
 import { FileText, ListCheck } from "lucide-react";
 
 const Assessment: React.FC = () => {
+  const { toast } = useToast();
+  const navigate = useNavigate();
+
+  const handleStartAssessment = (assessmentName: string, duration: string) => {
+    toast({
+      title: "Assessment Started",
+      description: `You are now taking the ${assessmentName} assessment (${duration}). Good luck!`,
+    });
+    
+    // In a real app, you would navigate to the actual assessment page
+    // For now, we'll just show a toast notification
+    // navigate('/assessment/take');
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
@@ -55,7 +71,10 @@ const Assessment: React.FC = () => {
                       <p className="text-muted-foreground mb-3">Evaluate your approach to lesson planning, delivery, and student engagement.</p>
                       <div className="flex justify-between items-center">
                         <span className="text-sm">30 minutes</span>
-                        <button className="btn-primary bg-primary text-white rounded-md px-4 py-2 shadow-sm hover:shadow-md transition-all-300">
+                        <button 
+                          className="btn-primary bg-primary text-white rounded-md px-4 py-2 shadow-sm hover:shadow-md transition-all-300"
+                          onClick={() => handleStartAssessment("Teaching Methodology", "30 minutes")}
+                        >
                           Start Assessment
                         </button>
                       </div>
@@ -65,7 +84,10 @@ const Assessment: React.FC = () => {
                       <p className="text-muted-foreground mb-3">Assess how effectively you provide constructive feedback to students.</p>
                       <div className="flex justify-between items-center">
                         <span className="text-sm">20 minutes</span>
-                        <button className="btn-primary bg-primary text-white rounded-md px-4 py-2 shadow-sm hover:shadow-md transition-all-300">
+                        <button 
+                          className="btn-primary bg-primary text-white rounded-md px-4 py-2 shadow-sm hover:shadow-md transition-all-300"
+                          onClick={() => handleStartAssessment("Student Feedback", "20 minutes")}
+                        >
                           Start Assessment
                         </button>
                       </div>

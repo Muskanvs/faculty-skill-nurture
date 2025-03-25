@@ -3,6 +3,7 @@ import React from "react";
 import PageTransition from "@/components/ui/PageTransition";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import { useToast } from "@/hooks/use-toast";
 import { 
   Breadcrumb,
   BreadcrumbItem,
@@ -13,6 +14,15 @@ import {
 } from "@/components/ui/breadcrumb";
 
 const Training: React.FC = () => {
+  const { toast } = useToast();
+
+  const handleEnroll = (courseName: string) => {
+    toast({
+      title: "Enrolled Successfully",
+      description: `You've been enrolled in ${courseName}. Check your dashboard for access.`,
+    });
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
@@ -97,7 +107,10 @@ const Training: React.FC = () => {
                         <p className="text-muted-foreground mb-4">Learn how to create engaging and effective lesson plans that achieve learning objectives.</p>
                         <div className="flex justify-between items-center">
                           <span className="text-sm">Duration: 2 hours</span>
-                          <button className="btn-primary bg-primary text-white rounded-md px-4 py-2 shadow-sm hover:shadow-md transition-all-300">
+                          <button 
+                            className="btn-primary bg-primary text-white rounded-md px-4 py-2 shadow-sm hover:shadow-md transition-all-300"
+                            onClick={() => handleEnroll("Effective Lesson Planning")}
+                          >
                             Enroll
                           </button>
                         </div>
@@ -108,7 +121,10 @@ const Training: React.FC = () => {
                         <p className="text-muted-foreground mb-4">Discover digital tools and platforms that can enhance student engagement and participation.</p>
                         <div className="flex justify-between items-center">
                           <span className="text-sm">Duration: 1.5 hours</span>
-                          <button className="btn-primary bg-primary text-white rounded-md px-4 py-2 shadow-sm hover:shadow-md transition-all-300">
+                          <button 
+                            className="btn-primary bg-primary text-white rounded-md px-4 py-2 shadow-sm hover:shadow-md transition-all-300"
+                            onClick={() => handleEnroll("Digital Tools for Classroom Engagement")}
+                          >
                             Enroll
                           </button>
                         </div>
@@ -119,7 +135,10 @@ const Training: React.FC = () => {
                         <p className="text-muted-foreground mb-4">Learn techniques for ongoing assessment that helps students improve throughout the learning process.</p>
                         <div className="flex justify-between items-center">
                           <span className="text-sm">Duration: 2.5 hours</span>
-                          <button className="btn-primary bg-primary text-white rounded-md px-4 py-2 shadow-sm hover:shadow-md transition-all-300">
+                          <button 
+                            className="btn-primary bg-primary text-white rounded-md px-4 py-2 shadow-sm hover:shadow-md transition-all-300"
+                            onClick={() => handleEnroll("Formative Assessment Strategies")}
+                          >
                             Enroll
                           </button>
                         </div>
@@ -130,7 +149,10 @@ const Training: React.FC = () => {
                         <p className="text-muted-foreground mb-4">Develop skills to provide meaningful feedback that motivates and guides student improvement.</p>
                         <div className="flex justify-between items-center">
                           <span className="text-sm">Duration: 45 minutes</span>
-                          <button className="btn-primary bg-primary text-white rounded-md px-4 py-2 shadow-sm hover:shadow-md transition-all-300">
+                          <button 
+                            className="btn-primary bg-primary text-white rounded-md px-4 py-2 shadow-sm hover:shadow-md transition-all-300"
+                            onClick={() => handleEnroll("Effective Feedback Techniques")}
+                          >
                             Enroll
                           </button>
                         </div>
